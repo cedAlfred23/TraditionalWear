@@ -10,7 +10,8 @@ const Hero = () => {
         <div className=' font-semibold flex items-center uppercase'>
           <div className='w-10 h-[2px] bg-blue-500 mr-3 uppercase'></div>New Trend
         </div>
-        <h1 className=' text-orange-300 p-0 text-[50px] leading-[1.1] font-light mb-4 uppercase md:text-[70px] sm:text-lime-700 md:text-red-600  lg:text-pink-700 xl:text-violet-500 '>
+        <h1 className='  p-0 text-[50px] leading-[1.1] font-light mb-4 uppercase md:text-[70px]
+        '>
           Your traditional Wear <br/>
           <span className='font-semibold uppercase'> AI powered</span>
         </h1>
@@ -25,3 +26,4 @@ const Hero = () => {
 
 export default Hero;
  
+// text-orange-300 sm:text-lime-700 md:text-red-600  lg:text-pink-700 xl:text-violet-500 
