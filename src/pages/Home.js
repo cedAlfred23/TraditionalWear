@@ -6,7 +6,6 @@ import Hero from '../components/Hero';
 const Home = () => {
   const { products } = useContext(ProductContext);
 
-  // get only men's and women's clothes
   const filterdProducts = products.filter(item => {
     return (
       item.category === "men's clothing" || item.category === "women's clothing"

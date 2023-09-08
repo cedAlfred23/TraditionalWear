@@ -3,13 +3,14 @@ import WomanImg from '../img/woman.png';
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
-  return <section className=' h-[800px] bg-hero bg-no-repeat bg-cover bg-center py-24'>
+  return (
+  <section className='h-[800px] bg-hero bg-no-repeat bg-cover bg-center py-24'>
     <div className='container mx-auto flex justify-around h-full'>
       <div className='flex flex-col p-14 justify-center m-3'>
         <div className=' font-semibold flex items-center uppercase'>
           <div className='w-10 h-[2px] bg-blue-500 mr-3 uppercase'></div>New Trend
         </div>
-        <h1 className='text-[70px] leading-[1.1] font-light mb-4 uppercase'>
+        <h1 className=' text-orange-300 p-0 text-[50px] leading-[1.1] font-light mb-4 uppercase md:text-[70px] sm:text-lime-700 md:text-red-600  lg:text-pink-700 xl:text-violet-500 '>
           Your traditional Wear <br/>
           <span className='font-semibold uppercase'> AI powered</span>
         </h1>
@@ -19,7 +20,7 @@ const Hero = () => {
         <img src={WomanImg} className='hidden lg:block w-full h-[695px] items-end justify-end md:h-[500]'/>
       </div>
     </div>
-  </section>
+  </section>)
 };
 
 export default Hero;
