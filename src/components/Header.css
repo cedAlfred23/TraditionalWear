@@ -1,27 +1,118 @@
 .camera-icon-container {
-    position: relative;
-    overflow: hidden;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease;
-  }
-  
-  .camera-icon-container:hover {
-    transform: scale(1.1);
-  }
-  
-  .camera-icon {
-    color: black;
-    font-size: 24px;
-    transition: all 0.3s ease;
-  }
-  
-  .camera-icon:hover {
-    transform: rotate(360deg);
-  }
-  
+  position: relative;
+  overflow: hidden;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.camera-icon-container:hover {
+  transform: scale(1.1);
+}
+
+.camera-icon {
+  color: black;
+  font-size: 24px;
+  transition: all 0.3s ease;
+}
+
+.camera-icon:hover {
+  transform: rotate(360deg);
+}
+
+/* Camera Modal */
+.camera-modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+.camera-modal-content {
+  background-color: white; /* Change to black */
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.camera-modal-content h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: gray; /* Text color */
+}
+
+.camera-modal-content .drag-drop-section {
+  border: 2px dashed gray;
+  background-color: #fff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.camera-modal-content .image-link-search-section {
+  display: flex;
+  margin-top: 1rem; /* Add some space */
+}
+
+.camera-modal-content #imageUrl {
+  border: 1px solid gray;
+  background-color: #fff;
+  padding: 0.5rem;
+  border-radius: 1rem; /* Make more rounded */
+  flex: 1;
+  outline: none;
+  transition: border-color 0.3s ease-in-out;
+  margin-right: 1rem; /* Add some space between input and button */
+}
+
+.camera-modal-content #imageUrl:focus {
+  border-color: black; /* Highlight border color on focus */
+}
+
+.camera-modal-content button {
+  background-color: gray; /* Change to black */
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 1rem; /* Make more rounded */
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.camera-modal-content button:hover {
+  background-color: #1d1d1d; /* Darken on hover */
+}
+
+.camera-modal-content .line-separator {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.camera-modal-content .line-separator div {
+  flex: 1;
+  height: 1px;
+  background-color: black; /* Line color */
+}
+
+.camera-modal-content .line-separator p {
+  margin: 0;
+  padding: 0 1rem;
+  color: gray; /* OR text color */
+  font-weight: bold;
+}
