@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { SidebarContext } from '../contexts/SidebarContext';
+import { ProductContext } from '../contexts/ProductContext';
 import { CartContext } from '../contexts/CartContext';
 import { BsBag, BsCamera, BsX } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
@@ -13,6 +14,8 @@ const Header = () => {
   const [imageUrl, setImageUrl] = useState('');
   const { isOpen, setIsOpen } = useContext(SidebarContext);
   const { itemAmount } = useContext(CartContext);
+  const { updateProducts } = useContext(ProductContext);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,6 +48,7 @@ const Header = () => {
   };
 
   const searchImages = async () => {
+    setIsLoading(true);
     const input = document.getElementById('imageUpload');
     const file = input.files[0];
 
@@ -61,11 +65,14 @@ const Header = () => {
         });
 
         const data = await response.json();
+        updateProducts(data); 
         // Handle the data as needed (updating UI, etc.)
-        console.log(data);
+        // console.log(data);
       } catch (error) {
         console.error('Error:', error);
-        // Handle errors (display error message, etc.)
+        // Handle errors
+      } finally {
+        setIsLoading(false);
       }
     }
   };
