@@ -1,5 +1,5 @@
 import React from 'react';
-import WomanImg from '../img/woman.png';
+import hero from '../img/hero.webp';
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
@@ -11,13 +11,13 @@ const Hero = () => {
           <div className='w-10 h-[2px] bg-blue-500 mr-3 uppercase'></div>New Trend
         </div>
         <h1 className='  p-0 text-[50px] leading-[1.1] font-light mb-4 uppercase md:text-[70px]'>
-          Your traditional Wear <br/>
+          Fashion Search Engine <br/>
           <span className='font-semibold uppercase'> AI powered</span>
         </h1>
         <Link to={'/'} className='self-start uppercase font-semibold border-b-2 border-primary hover:border-b-0'>Discover more</Link>
       </div>
       <div>
-        <img src={WomanImg} className='hidden lg:block w-full h-[695px] items-end justify-end md:h-[500]'/>
+        <img src={hero} className='hidden lg:block w-full h-[695px] items-end justify-end md:h-[500]'/>
       </div>
     </div>
   </section>)

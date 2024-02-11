@@ -9,6 +9,8 @@ import './Header.css';
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
   const [isCameraModalOpen, setIsCameraModalOpen] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [imageUrl, setImageUrl] = useState('');
   const { isOpen, setIsOpen } = useContext(SidebarContext);
   const { itemAmount } = useContext(CartContext);
 
@@ -31,6 +33,49 @@ const Header = () => {
   const closeCameraModal = () => {
     setIsCameraModalOpen(false);
   };
+
+  const updateFileLabel = () => {
+    const fileInput = document.getElementById('imageUpload');
+    const fileLabel = document.getElementById('fileLabel');
+    if (fileInput.files.length > 0) {
+      fileLabel.textContent = fileInput.files[0].name;
+    } else {
+      fileLabel.textContent = 'Choose an image to upload';
+    }
+  };
+
+  const searchImages = async () => {
+    const input = document.getElementById('imageUpload');
+    const file = input.files[0];
+
+    if (file) {
+      const formData = new FormData();
+      formData.append('image', file);
+
+      const apiUrl = 'http://localhost:5000/api/predict';
+
+      try {
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          body: formData,
+        });
+
+        const data = await response.json();
+        // Handle the data as needed (updating UI, etc.)
+        console.log(data);
+      } catch (error) {
+        console.error('Error:', error);
+        // Handle errors (display error message, etc.)
+      }
+    }
+  };
+
+  // Auto-upload the image when selected
+  useEffect(() => {
+    if (selectedFile) {
+      searchImages();
+    }
+  }, [selectedFile]);
 
   return (
     <header className={`fixed w-full z-10 transition-all ${isActive ? 'bg-white py-4 shadow-md' : 'bg-none py-6'}`}>
@@ -64,14 +109,22 @@ const Header = () => {
             </div>
             <h2 className='text-lg font-bold mb-4'>Fashion Search Engine</h2>
             <div className='drag-drop-section border-dashed border border-black'>
-              
+
               {/* Drag and Drop Section */}
               <div className='border-gray-300 p-4 mb-4 text-center'>
                 Drag an image here or{' '}
                 <label htmlFor='imageUpload' className='text-blue-500 cursor-pointer'>
                   upload a file
                 </label>
-                <input type='file' id='imageUpload' className='hidden' />
+                <input
+                  type='file'
+                  id='imageUpload'
+                  className='hidden'
+                  onChange={(e) => {
+                    setSelectedFile(e.target.files[0]);
+                    updateFileLabel();
+                  }}
+                />
               </div>
 
               {/* Line separator */}
@@ -81,7 +134,6 @@ const Header = () => {
                 <div></div>
               </div>
 
-
               {/* Image Link Search Section */}
               <div className='image-link-search-section p-4 rounded-md mb-4'>
                 <div className='flex'>
@@ -90,19 +142,22 @@ const Header = () => {
                     id='imageUrl'
                     placeholder='Paste image link'
                     className='border p-2 w-full rounded-l-md focus:outline-none focus:ring focus:border-white'
+                    value={imageUrl}
+                    onChange={(e) => setImageUrl(e.target.value)}
                   />
 
-                  <button className='bg-black text-white px-4 py-2 rounded-r-md hover:bg-gray-800 focus:outline-none focus:ring focus:border-white'>
+                  <button
+                    className='bg-black text-white px-4 py-2 rounded-r-md hover:bg-gray-800 focus:outline-none focus:ring focus:border-white'
+                    onClick={searchImages}
+                  >
                     Search
                   </button>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
       )}
-
     </header>
   );
 };
