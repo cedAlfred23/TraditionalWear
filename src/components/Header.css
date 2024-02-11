@@ -1,0 +1,27 @@
+.camera-icon-container {
+    position: relative;
+    overflow: hidden;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+  
+  .camera-icon-container:hover {
+    transform: scale(1.1);
+  }
+  
+  .camera-icon {
+    color: black;
+    font-size: 24px;
+    transition: all 0.3s ease;
+  }
+  
+  .camera-icon:hover {
+    transform: rotate(360deg);
+  }
+  
