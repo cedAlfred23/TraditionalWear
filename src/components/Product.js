@@ -7,14 +7,14 @@ import { CartContext } from '../contexts/CartContext';
 
 const Product = ({ product }) => {
   const { addToCart } = useContext(CartContext);
-  const { id, image, category, title, price } = product;
+  const { id, img_path, category, title, price } = product;
   return (
     <div>
 
       <div className=' border border-[#e4e4e4] h-[300px] mb-4 relative overflow-hidden group transition rounded'>
         <div className=' w-full h-full flex justify-center items-center'>
           <div className=' w-[200px] mx-auto flex justify-center items-center'>
-            <img className='max-h-[160px] group-hover:scale-110 transition duration-300' src={image} alt='' />
+            <img className='max-h-[160px] group-hover:scale-110 transition duration-300' src={img_path} alt='' />
           </div>
         </div>
 
