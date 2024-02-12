@@ -47,40 +47,57 @@ const Header = () => {
     }
   };
 
-  const searchImages = async () => {
+  const searchImagesFromUrl = async () => {
     setIsLoading(true);
-    const input = document.getElementById('imageUpload');
-    const file = input.files[0];
-
-    if (file) {
+    const apiUrl = 'http://localhost:5000/api/predict';
+  
+    try {
       const formData = new FormData();
-      formData.append('image', file);
+      formData.append('url', imageUrl);  // Use 'url' instead of 'imageUrl'
+  
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        body: formData,
+      });
+  
+      const data = await response.json();
+      updateProducts(data);
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle errors
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  
 
-      const apiUrl = 'http://localhost:5000/api/predict';
+  const searchImagesFromUpload = async () => {
+    setIsLoading(true);
+    const formData = new FormData();
+    formData.append('image', selectedFile);
 
-      try {
-        const response = await fetch(apiUrl, {
-          method: 'POST',
-          body: formData,
-        });
+    const apiUrl = 'http://localhost:5000/api/predict';
 
-        const data = await response.json();
-        updateProducts(data); 
-        // Handle the data as needed (updating UI, etc.)
-        // console.log(data);
-      } catch (error) {
-        console.error('Error:', error);
-        // Handle errors
-      } finally {
-        setIsLoading(false);
-      }
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+      updateProducts(data); 
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle errors
+    } finally {
+      setIsLoading(false);
     }
   };
 
   // Auto-upload the image when selected
   useEffect(() => {
     if (selectedFile) {
-      searchImages();
+      searchImagesFromUpload();
     }
   }, [selectedFile]);
 
@@ -155,7 +172,7 @@ const Header = () => {
 
                   <button
                     className='bg-black text-white px-4 py-2 rounded-r-md hover:bg-gray-800 focus:outline-none focus:ring focus:border-white'
-                    onClick={searchImages}
+                    onClick={searchImagesFromUrl}
                   >
                     Search
                   </button>
