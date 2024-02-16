@@ -1,10 +1,11 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
 import { SidebarContext } from '../contexts/SidebarContext';
 import { ProductContext } from '../contexts/ProductContext';
 import { CartContext } from '../contexts/CartContext';
 import { BsBag, BsCamera, BsX } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import Logo from '../img/logo.svg';
+import { useNavigate } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
@@ -14,8 +15,9 @@ const Header = () => {
   const [imageUrl, setImageUrl] = useState('');
   const { isOpen, setIsOpen } = useContext(SidebarContext);
   const { itemAmount } = useContext(CartContext);
-  const { updateProducts } = useContext(ProductContext);
-  const [isLoading, setIsLoading] = useState(false);
+  const { fetchProductData } = useContext(ProductContext);
+  const { navigate } = useNavigate();
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,69 +39,38 @@ const Header = () => {
     setIsCameraModalOpen(false);
   };
 
-  const updateFileLabel = () => {
-    const fileInput = document.getElementById('imageUpload');
-    const fileLabel = document.getElementById('fileLabel');
-    if (fileInput.files.length > 0) {
-      fileLabel.textContent = fileInput.files[0].name;
-    } else {
-      fileLabel.textContent = 'Choose an image to upload';
-    }
-  };
-
   const searchImagesFromUrl = async () => {
-    setIsLoading(true);
-    const apiUrl = 'http://localhost:5000/api/predict';
-  
-    try {
-      const formData = new FormData();
-      formData.append('url', imageUrl);  // Use 'url' instead of 'imageUrl'
-  
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        body: formData,
-      });
-  
-      const data = await response.json();
-      updateProducts(data);
-    } catch (error) {
-      console.error('Error:', error);
-      // Handle errors
-    } finally {
-      setIsLoading(false);
-    }
-  };
-  
-
-  const searchImagesFromUpload = async () => {
-    setIsLoading(true);
-    const formData = new FormData();
-    formData.append('image', selectedFile);
-
-    const apiUrl = 'http://localhost:5000/api/predict';
+    const requestData = new FormData();
+    requestData.append('url', imageUrl);
 
     try {
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        body: formData,
-      });
-
-      const data = await response.json();
-      updateProducts(data); 
+      await fetchProductData(requestData);
+      navigate('/')
     } catch (error) {
-      console.error('Error:', error);
-      // Handle errors
-    } finally {
-      setIsLoading(false);
+      console.error('Error searching images from URL:', error);
     }
   };
+
+  const searchImagesFromUpload = useCallback(async () => {
+  if (selectedFile) {
+    const requestData = new FormData();
+    requestData.append('image', selectedFile);
+  
+    try {
+      await fetchProductData(requestData);
+      navigate('/')
+    } catch (error) {
+      console.error('Error searching images from upload:', error);
+    }
+  }// eslint-disable-next-line
+  }, [selectedFile, fetchProductData]);
 
   // Auto-upload the image when selected
   useEffect(() => {
-    if (selectedFile) {
-      searchImagesFromUpload();
-    }
-  }, [selectedFile]);
+    searchImagesFromUpload();// eslint-disable-next-line 
+  }, [selectedFile]); // Remove searchImagesFromUpload from the dependency array
+
+  
 
   return (
     <header className={`fixed w-full z-10 transition-all ${isActive ? 'bg-white py-4 shadow-md' : 'bg-none py-6'}`}>
@@ -123,6 +94,15 @@ const Header = () => {
           </div>
         </div>
       </div>
+{/*     
+      <div className="upload-feedback" style={{ display: loading ? 'block' : 'none' }}>
+        <span className="spinner-border" role="status" aria-hidden="true"></span>
+      </div>
+      <div
+        className="upload-feedback"
+        style={{ display: success ? 'block' : 'none', color: '#218838' }}
+      >
+      </div> */}
 
       {/* Camera Modal */}
       {isCameraModalOpen && (
@@ -146,7 +126,6 @@ const Header = () => {
                   className='hidden'
                   onChange={(e) => {
                     setSelectedFile(e.target.files[0]);
-                    updateFileLabel();
                   }}
                 />
               </div>
