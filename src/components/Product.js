@@ -38,7 +38,7 @@ const ProductComponent = ({ product }) => {
       <div>
         <div className="text-sm capitalize text-gray500 mb-1">{category}</div>
         <Link to={`/product/${id}`}>
-          <h2 className=" font-semibold mb-1">{title}</h2>
+          <h2 className=" font-semibold mb-1">{`${title}`}</h2>
         </Link>
         <div className="font-semibold">¢ {price}</div>
       </div>
