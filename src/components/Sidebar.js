@@ -25,7 +25,7 @@ const Sidebar = () => {
         // return <div>{item.id} {item.price} </div>
       })}
     </div>
-    <div className='flex flex-col gap-y-3 py-4 mt-[-60px] z-0 w-full overflow-y-auto overflow-x-hidden pb-52'>
+    <div className='flex flex-col gap-y-3 py-4 mt-[-60px] z-0 w-full overflow-y-auto overflow-x-hidden pb-96'>
       <div className='flex w-full justify-between items-center'>
         <div className='uppercase font-semibold pr-10'>
           <span className='mr-2'>
