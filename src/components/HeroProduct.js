@@ -11,15 +11,12 @@ const Product = ({ product }) => {
   const {
     id,
     img_path,
-    category,
-    title,
     price,
     brand,
     shortDescription,
     stockTotal,
   } = product;
 
-  const { images } = product;
   return (
   
 
@@ -37,7 +34,7 @@ const Product = ({ product }) => {
                 <div className=" w-[200px] mx-auto flex justify-center items-center">
                   <img
                     className="max-h-[160px] group-hover:scale-110 transition duration-300"
-                    src={{ img_path }}
+                    src={`${apiBaseUrl}/${img_path}`} 
                     alt={id}
                   />
                 </div>
@@ -59,7 +56,6 @@ const Product = ({ product }) => {
             </div>
           </div>
           <div className="mt-4">
-            <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
             <h3 className="text-xl font-semibold text-gray-800">{brand}</h3>
             <p className="text-sm text-gray-600">{shortDescription}</p>
             <div className="mt-4 flex justify-between items-center">
