@@ -5,7 +5,6 @@ import { CartContext } from '../contexts/CartContext';
 import { BsBag, BsCamera, BsX } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import Logo from '../img/logo.svg';
-import { useNavigate } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
@@ -16,7 +15,6 @@ const Header = () => {
   const { isOpen, setIsOpen } = useContext(SidebarContext);
   const { itemAmount } = useContext(CartContext);
   const { fetchProductData } = useContext(ProductContext);
-  const { navigate } = useNavigate();
   
 
   useEffect(() => {
@@ -42,28 +40,29 @@ const Header = () => {
   const searchImagesFromUrl = async () => {
     const requestData = new FormData();
     requestData.append('url', imageUrl);
-
+  
     try {
       await fetchProductData(requestData);
-      navigate('/')
+      // window.location.href = '/'; 
     } catch (error) {
       console.error('Error searching images from URL:', error);
     }
   };
-
-  const searchImagesFromUpload = useCallback(async () => {
-  if (selectedFile) {
-    const requestData = new FormData();
-    requestData.append('image', selectedFile);
   
-    try {
-      await fetchProductData(requestData);
-      navigate('/')
-    } catch (error) {
-      console.error('Error searching images from upload:', error);
+  const searchImagesFromUpload = useCallback(async () => {
+    if (selectedFile) {
+      const requestData = new FormData();
+      requestData.append('image', selectedFile);
+  
+      try {
+        await fetchProductData(requestData);
+        // window.location.href = '/'; 
+      } catch (error) {
+        console.error('Error searching images from upload:', error);
+      }
     }
-  }// eslint-disable-next-line
   }, [selectedFile, fetchProductData]);
+  
 
   // Auto-upload the image when selected
   useEffect(() => {

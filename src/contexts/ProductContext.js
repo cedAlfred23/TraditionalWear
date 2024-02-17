@@ -1,4 +1,3 @@
-// ProductContext.js
 import React, { createContext, useState } from 'react';
 
 export const ProductContext = createContext();
@@ -17,14 +16,11 @@ const ProductProvider = ({ children }) => {
       });
 
       const data = await response.json();
-      console.log('Data:', data);
-      const sanitizedJson = data.replace(/"availableSizes":\s*NaN/g, '"availableSizes": "N/A"');
-      console.log('Sanitized:', sanitizedJson);
-      const parsedResponse = JSON.parse(sanitizedJson);
-      console.log('Parsed:', parsedResponse);
-      setProducts(parsedResponse.similar_images);
-      console.log('Products:', products);
-
+      setProducts((prevProducts) => {
+        console.log('Previous Products:', prevProducts);
+        console.log('New Products:', data);
+        return data;
+      });
     } catch (error) {
       console.error('Error:', error);
       // Handle errors
