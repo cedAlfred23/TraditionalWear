@@ -1,37 +1,46 @@
-import React, { useContext } from 'react';
-import { CartContext } from '../contexts/CartContext';
-import './Header.css';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 
-const ProductComponent = ({ products }) => {
-  const { similar_images, id } = products;
-  const apiBaseUrl = 'http://localhost:5000/api/'; // Update with the API base URL
-  const { addToCart } = useContext(CartContext); // Make sure to import CartContext from your context file
+import { BsPlus, BsEyeFill } from "react-icons/bs";
 
+import { CartContext } from "../contexts/CartContext";
+
+const Product = ({ product }) => {
+  const { addToCart } = useContext(CartContext);
+  const { id, image, category, title, price } = product;
   return (
-    <div className="container mx-auto">
-      {/* Display similar images */}
-      <div id="results-container" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-        {similar_images.map((item) => (
-          <div key={item.id} className="bg-white p-6 rounded-md shadow-lg overflow-hidden transition duration-300 transform hover:scale-105">
-            <div className="relative">
-              <img src={`${apiBaseUrl}/${item.img_path}`} alt="Similar" className="w-full h-64 object-cover mb-4 rounded-md" />
-              <button
-                onClick={() => addToCart(products, id)} // Assuming addToCart takes the product id
-                className="absolute top-2 right-2 px-4 py-2 bg-gray-800 text-white rounded-md opacity-80 hover:opacity-100 focus:outline-none focus:ring focus:border-gray-500 transition-transform"
-              >
-                Add to Cart {item.id}
-              </button>
-            </div>
-            <div className="mt-4">
-              <h3 className="text-xl font-semibold text-gray-800 overflow-hidden single-line-text">{item.brand}</h3>
-              <p className="text-sm text-gray-600">{item.shortDescription}</p>
-              <div className="mt-4 flex justify-between items-center">
-                <p className="text-lg font-bold text-gray-700">{`${item.price}`}</p>
-                <p className="text-sm text-gray-500">{`Stock: ${item.stockTotal}`}</p>
-              </div>
-            </div>
+    <div>
+      <div className=" border border-[#e4e4e4] h-[300px] mb-4 relative overflow-hidden group transition rounded">
+        <div className=" w-full h-full flex justify-center items-center">
+          <div className=" w-[200px] mx-auto flex justify-center items-center">
+            <img
+              className="max-h-[160px] group-hover:scale-110 transition duration-300"
+              src={image}
+              alt=""
+            />
           </div>
-        ))}
+        </div>
+
+        <div className=" absolute top-6 -right-11 group-hover:right-0 p-2 flex flex-col items-center justify-center gap-y-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+          <button onClick={() => addToCart(product, id)}>
+            <div className=" flex justify-center items-center text-white w-12 h-12 bg-red-500 rounded-xl">
+              <BsPlus className=" text-3xl" />
+            </div>
+          </button>
+          <Link
+            to={`/product/${id}`}
+            className="w-12 h-12 bg-white flex justify-center items-center text-primary drop-shadow-xl rounded-xl"
+          >
+            <BsEyeFill />
+          </Link>
+        </div>
+      </div>
+      <div>
+        <div className="text-sm capitalize text-gray500 mb-1">{category}</div>
+        <Link to={`/product/${id}`}>
+          <h2 className=" font-semibold mb-1">{title}</h2>
+        </Link>
+        <div className="font-semibold">¢ {price}</div>
       </div>
     </div>
   );
