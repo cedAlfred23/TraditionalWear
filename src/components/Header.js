@@ -37,31 +37,27 @@ const Header = () => {
     setIsCameraModalOpen(false);
   };
 
-  const searchImagesFromUrl = async () => {
-    const requestData = new FormData();
-    requestData.append('url', imageUrl);
-  
+  const searchImages = async (requestData) => {
     try {
       await fetchProductData(requestData);
-      // window.location.href = '/'; 
     } catch (error) {
-      console.error('Error searching images from URL:', error);
+      console.error('Error searching images:', error);
     }
   };
   
-  const searchImagesFromUpload = useCallback(async () => {
+  const searchImagesFromUrl = () => {
+    const requestData = new FormData();
+    requestData.append('url', imageUrl);
+    searchImages(requestData);
+  };
+
+  const searchImagesFromUpload = useCallback(() => {
     if (selectedFile) {
       const requestData = new FormData();
       requestData.append('image', selectedFile);
-  
-      try {
-        await fetchProductData(requestData);
-        // window.location.href = '/'; 
-      } catch (error) {
-        console.error('Error searching images from upload:', error);
-      }
+      searchImages(requestData);
     }
-  }, [selectedFile, fetchProductData]);
+  }, [selectedFile]);
   
 
   // Auto-upload the image when selected
