@@ -14,7 +14,10 @@ const Hero = () => {
           Vision Search Engine <br/>
           <span className='font-semibold uppercase'> AI powered</span>
         </h1>
-        <Link to={'/'} className='self-start uppercase font-semibold border-b-2 border-primary hover:border-b-0'>Discover more</Link>
+        <div className=' font-semibold flex items-center uppercase'>
+          <div className='w-10 h-[2px] bg-blue-500 mr-3 uppercase'></div>
+        </div>
+        {/* <Link to={'/'} className='self-start uppercase font-semibold border-b-2 border-primary hover:border-b-0'>Discover more</Link> */}
       </div>
       <div>
         <img src={hero} alt='Description of hero' className='hidden lg:block w-full h-[695px] items-end justify-end md:h-[500]'/>

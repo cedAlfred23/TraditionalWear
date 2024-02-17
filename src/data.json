@@ -1,0 +1,18 @@
+const jsonResponse = 
+{\
+"top_10_indexes\": [29119, 84906, 62810, 111595, 132447, 42089, 34057, 110636, 144095, 154625], 
+\"query_image_path\": \"/home/skay/Documents/Project/Capstone/VIsual-Search-Engine/API/temp/headphones.jpg\", 
+\"query_image_url\": null, 
+\"similar_images\": [
+    {\"img_path\": \"/home/skay/Documents/Project/Capstone/VIsual-Search-Engine/API/data/model-img/model/14092440_20269305_300.jpg\", \"brand\": \"Prada\", \"price\": \"$3,354\", \"availableSizes\": \"[{'scaleId': 0, 'size': 'One Size'}]\", \"shortDescription\": \"Sidonie shoulder bag\", \"stockTotal\": 4},
+    {\"img_path\": \"/home/skay/Documents/Project/Capstone/VIsual-Search-Engine/API/data/model-img/model/13766105_17095724_300.jpg\", \"brand\": \"Dolce & Gabbana\", \"price\": \"$279\", \"availableSizes\": \"[{'scaleId': 0, 'size': 'XS'}, {'scaleId': 0, 'size': 'S'}]\", \"shortDescription\": \"printed push-up bikini  top\", \"stockTotal\": 3},
+    {\"img_path\": \"/home/skay/Documents/Project/Capstone/VIsual-Search-Engine/API/data/model-img/model/13904498_17897744_300.jpg\", \"brand\": \"Shamballa Jewels\", \"price\": \"$787\", \"availableSizes\": \"[{'scaleId': 0, 'size': 'S'}]\", \"shortDescription\": \"18kt white gold and diamond Star of Shamballa charm cord bracelet\", \"stockTotal\": 1},
+    {\"img_path\": \"/home/skay/Documents/Project/Capstone/VIsual-Search-Engine/API/data/model-img/model/13597089_20221708_300.jpg\", \"brand\": \"Ren\é Caovilla\", \"price\": \"$1,694\", \"availableSizes\": NaN, \"shortDescription\": \"Cleo sandals\", \"stockTotal\": 4}, 
+    {\"img_path\": \"/home/skay/Documents/Project/Capstone/VIsual-Search-Engine/API/data/model-img/model/13473644_16242941_300.jpg\", \"brand\": \"Zadig&Voltaire\", \"price\": \"$397\", \"availableSizes\": NaN, \"shortDescription\": \"may studded sandals\", \"stockTotal\": 4}, 
+    {\"img_path\": \"/home/skay/Documents/Project/Capstone/VIsual-Search-Engine/API/data/model-img/model/14016530_18275563_300.jpg\", \"brand\": \"Mc2 Saint Barth\", \"price\": \"$68\", \"availableSizes\": \"[{'scaleId': 0, 'size': 'S'}]\", \"shortDescription\": \"tropical print bikini top\", \"stockTotal\": 1}, 
+    {\"img_path\": \"/home/skay/Documents/Project/Capstone/VIsual-Search-Engine/API/data/model-img/model/14063249_18422875_300.jpg\", \"brand\": \"Burberry\", \"price\": \"$3,490\", \"availableSizes\": \"[{'scaleId': 0, 'size': 'One Size'}]\", \"shortDescription\": \"medium Cube tote bag\", \"stockTotal\": 10}, 
+    {\"img_path\": \"/home/skay/Documents/Project/Capstone/VIsual-Search-Engine/API/data/model-img/model/13602570_16302710_300.jpg\", \"brand\": \"Giuseppe Zanotti\", \"price\": \"$769\", \"availableSizes\": NaN, \"shortDescription\": \"Kassie 90 sandals\", \"stockTotal\": 7}, 
+    {\"img_path\": \"/home/skay/Documents/Project/Capstone/VIsual-Search-Engine/API/data/model-img/model/13351952_15594670_300.jpg\", \"brand\": \"Prada\", \"price\": \"$4,370\", \"availableSizes\": \"[{'scaleId': 0, 'size': 'One Size'}]\", \"shortDescription\": \"Cahier shoulder bag\", \"stockTotal\": 1}, 
+    {\"img_path\": \"/home/skay/Documents/Project/Capstone/VIsual-Search-Engine/API/data/model-img/model/13142367_14734182_300.jpg\", \"brand\": \"Proenza Schouler\", \"price\": \"$300\", \"availableSizes\": \"[{'scaleId': 0, 'size': 'S'}, {'scaleId': 0, 'size': 'M'}, {'scaleId': 0, 'size': 'L'}]\", \"shortDescription\": \"Tie Detail One Piece Swimsuit\", \"stockTotal\": 4}
+]
+    }

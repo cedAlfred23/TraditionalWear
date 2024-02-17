@@ -25,6 +25,7 @@ useEffect(() => {
   const addToCart = (product, id)=>{
     const newItem = {...product, amount:1};
     const cartItem = cart.find((item) => {
+      console.log(item.price)
       return item.id === id
     });
     

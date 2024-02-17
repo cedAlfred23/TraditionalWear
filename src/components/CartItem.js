@@ -5,12 +5,13 @@ import { CartContext } from "../contexts/CartContext";
 
 const CartItem = ({ item }) => {
   const { removeFromCart, increaseAmount, decreaseAmount } = useContext(CartContext);
-  const { id, title, image, price, amount } = item;
+  const { id, title, img_path, price, amount } = item;
   return (
     <div className="flex gap-x-4 py-2 lg:px-6 border-b border-gray-200 text-gray-500 w-full">
       <div className="w-full min-h-[50px] flex items-center gap-x-4">
         <Link to={`/product/${id}`}>
-          <img className=" max-w-[80px]" src={image} alt="" />
+          <img className=" max-w-[80px]"  src={img_path} alt='{item.img_path}' />
+          {/* <p>{item.img_path}</p> */}
         </Link>
         <div className=" w-full flex flex-col">
           <div className=" flex justify-between mb-2">
@@ -39,7 +40,7 @@ const CartItem = ({ item }) => {
             ¢ {price}
             </div>
             <div className=" flex-1 flex justify-end items-center text-primary font-medium">
-              {`$ ${parseFloat(price * amount).toFixed(2)}`}
+              {`¢ ${parseFloat(price * amount).toFixed(3)}`}
             </div>
           </div>
         </div>

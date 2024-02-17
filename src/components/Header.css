@@ -116,3 +116,9 @@
   color: gray; /* OR text color */
   font-weight: bold;
 }
+
+.single-line-text {
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide any overflow text */
+  text-overflow: ellipsis; /* Display an ellipsis (...) to indicate that the text has been truncated */
+}

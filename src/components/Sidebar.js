@@ -5,6 +5,7 @@ import { FiTrash2 } from 'react-icons/fi'
 import CartItem from '../components/CartItem'
 import { SidebarContext } from '../contexts/SidebarContext'
 import { CartContext } from '../contexts/CartContext'; 
+import CheckoutPage from '../pages/CheckOutPage';
 
 const Sidebar = () => {
   const { isOpen, handleClose } = useContext(SidebarContext);
@@ -21,9 +22,10 @@ const Sidebar = () => {
     <div className='flex flex-col gap-y-2 h-[500px] lg:h-[600px] overflow-y-auto overflow-x-hidden border-b'>
       {cart.map((item) => {
         return <CartItem item={item} key={item.id}/>
+        // return <div>{item.id} {item.price} </div>
       })}
     </div>
-    <div className='flex flex-col gap-y-3 py-4 mt-4 w-full overflow-y-auto overflow-x-hidden'>
+    <div className='flex flex-col gap-y-3 py-4 mt-[-60px] z-0 w-full overflow-y-auto overflow-x-hidden'>
       <div className='flex w-full justify-between items-center'>
         <div className='uppercase font-semibold pr-10'>
           <span className='mr-2'>
@@ -35,8 +37,8 @@ const Sidebar = () => {
           <FiTrash2 />
         </div>
       </div>
-      <Link className=' bg-gray-200 flex p-4 justify-center items-center text-primary w-full font-medium rounded'>View cart</Link>
-      <Link className='bg-primary flex p-4 justify-center items-center text-white w-full font-medium rounded'>Checkout</Link>
+      {/* <Link className=' bg-gray-200 flex p-4 justify-center items-center text-primary w-full font-medium rounded'>View cart</Link> */}
+      <Link to={`/checkout`} className='bg-primary flex p-4 justify-center items-center text-white w-full font-medium rounded'>Checkout</Link>
     </div>
   </div>
 };
