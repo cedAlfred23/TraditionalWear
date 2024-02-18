@@ -11,10 +11,10 @@ const useFetch = () => {
     try {
       const response = await fetch(`${PRODUCT_URL}/products`);
       const data = await response.json();
-      if (response.ok) {
+      if (response?.ok) {
         setProducts(data);
       } else {
-        throw new Error(data.message);
+        throw new Error(data?.message);
       }
     } catch (error) {
       setError(error?.message ?? "An error occurred while fetching data");
@@ -38,7 +38,7 @@ const useFetch = () => {
         // Update products state with the newly created product
         setProducts([...products, data]);
       } else {
-        throw new Error(data.message);
+        throw new Error(data?.message);
       }
     } catch (error) {
       setError(error?.message ?? "An error occurred while creating product");
