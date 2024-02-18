@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import { PRODUCT_URL } from "../util/api";
 
-const useFetch = () => {
+const usePostData = () => {
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
   const [error, setError] = useState("");
@@ -61,7 +61,7 @@ const useFetch = () => {
 
 // HOW TO USE IT
 /**
- *   const { error, loading, products, createProduct } = useFetch();
+ *   const { error, loading, products, createProduct } = usePostData();
  *   const handleCreateProduct = async () => {
      const newProductData = {
       // define your new product data here
@@ -72,4 +72,4 @@ const useFetch = () => {
   };
  */
 
-export default useFetch;
+export default usePostData;
