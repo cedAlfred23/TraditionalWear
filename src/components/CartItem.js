@@ -1,18 +1,18 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { IoMdClose, IoMdAdd, IoMdRemove } from "react-icons/io";
-import { CartContext } from "../contexts/CartContext";
+import { CartContext } from "../contexts/CartContext"
+import { PRODUCT_URL } from "../util/api";
 
 const CartItem = ({ item }) => {
   const { removeFromCart, increaseAmount, decreaseAmount } = useContext(CartContext);
   const { id, shortDescription, img_path, price, amount } = item;
-  const apiBaseUrl = "http://localhost:5000/api/"; // Update with the API base URL
-
+  
   return (
     <div className="flex gap-x-4 py-2 lg:px-6 border-b border-gray-200 text-gray-500 w-full">
       <div className="w-full min-h-[50px] flex items-center gap-x-4">
         <Link to={`/product/${id}`}>
-          <img className=" max-w-[80px]" src={`${apiBaseUrl}/${img_path}`} alt='{item.img_path}' />
+          <img className=" max-w-[80px]" src={`${PRODUCT_URL}/${img_path}`} alt='{item.img_path}' />
         </Link>
         <div className=" w-full flex flex-col">
           <div className=" flex justify-between mb-2">
