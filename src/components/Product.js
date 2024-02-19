@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import { BsPlus, BsEyeFill } from "react-icons/bs";
 
 import { CartContext } from "../contexts/CartContext";
+import { PRODUCT_URL } from "../util/api";
 
 const Product = ({ product }) => {
   const { addToCart } = useContext(CartContext);
-  const apiBaseUrl = "http://localhost:5000/api/"; // Update with the API base URL
   const {
     id,
     img_path,
@@ -32,7 +32,7 @@ const Product = ({ product }) => {
                 <div className=" w-[200px] mx-auto flex justify-center items-center">
                   <img
                     className="max-h-[160px] group-hover:scale-110 transition duration-300"
-                    src={`${apiBaseUrl}/${img_path}`} 
+                    src={`${PRODUCT_URL}/${img_path}`} 
                     alt={id}
                   />
                 </div>
