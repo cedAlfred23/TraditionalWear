@@ -14,14 +14,9 @@ const ProductProvider = ({ children }) => {
         method: 'POST',
         body: requestData,
       });
-
       const data = await response.json();
       const parseData = JSON.parse(data);
-      setProducts((prevProducts) => {
-        // console.log('Previous Products:', prevProducts);
-        // console.log('New Products:', data);
-        return parseData;
-      });
+      setProducts(parseData);
     } catch (error) {
       console.error('Error:', error);
       // Handle errors

@@ -32,7 +32,7 @@ const Sidebar = () => {
           <span className='mr-2'>
             Total: 
           </span>
-          $ {parseFloat(total).toFixed(2)}
+          ¢ {parseFloat(total).toFixed(2)}
         </div>
         <div onClick={clearCart} className='cursor-pointer py-4 bg-red-500 text-white w-12 h-12 flex justify-center items-center text-xl rounded'>
           <FiTrash2 />
