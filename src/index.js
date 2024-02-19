@@ -8,14 +8,13 @@ import CartProvider from './contexts/CartContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  
+  <ProductProvider >
   <SidebarProvider>
     <CartProvider>
-    <ProductProvider>
       <React.StrictMode>
         <App />
       </React.StrictMode>
-    </ProductProvider>
     </CartProvider>
   </SidebarProvider>
+  </ProductProvider>
 );

@@ -89,15 +89,6 @@ const Header = () => {
           </div>
         </div>
       </div>
-{/*     
-      <div className="upload-feedback" style={{ display: loading ? 'block' : 'none' }}>
-        <span className="spinner-border" role="status" aria-hidden="true"></span>
-      </div>
-      <div
-        className="upload-feedback"
-        style={{ display: success ? 'block' : 'none', color: '#218838' }}
-      >
-      </div> */}
 
       {/* Camera Modal */}
       {isCameraModalOpen && (

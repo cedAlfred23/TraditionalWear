@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react';
+import { DETECTION_URL } from "../util/api";
 
 export const ProductContext = createContext();
 
@@ -7,19 +8,19 @@ const ProductProvider = ({ children }) => {
 
   // Function to fetch product data from the API
   const fetchProductData = async (requestData) => {
-    const apiUrl = 'http://localhost:5000/api/predict';
 
     try {
-      const response = await fetch(apiUrl, {
+      const response = await fetch(`${DETECTION_URL}`, {
         method: 'POST',
         body: requestData,
       });
 
       const data = await response.json();
+      const parseData = JSON.parse(data);
       setProducts((prevProducts) => {
-        console.log('Previous Products:', prevProducts);
-        console.log('New Products:', data);
-        return data;
+        // console.log('Previous Products:', prevProducts);
+        // console.log('New Products:', data);
+        return parseData;
       });
     } catch (error) {
       console.error('Error:', error);
