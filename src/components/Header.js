@@ -49,6 +49,7 @@ const Header = () => {
     const requestData = new FormData();
     requestData.append('url', imageUrl);
     searchImages(requestData);
+    closeCameraModal();
   };
 
   const searchImagesFromUpload = useCallback(() => {
@@ -56,6 +57,7 @@ const Header = () => {
       const requestData = new FormData();
       requestData.append('image', selectedFile);
       searchImages(requestData);
+      closeCameraModal();
     }
   }, [selectedFile]);
   
