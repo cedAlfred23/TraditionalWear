@@ -1,9 +1,9 @@
 /**
  * API TO FETCH ENDPOINT FOR FAKESTORE
  */
-export const PRODUCT_URL = "https://0bfd-102-176-75-144.ngrok-free.app/api";
+export const PRODUCT_URL = "http://192.168.43.123:5000/api";
 
 /**
  * Detection API ENdpoint
  */
-export const DETECTION_URL = "https://0bfd-102-176-75-144.ngrok-free.app/api/predict";
+export const DETECTION_URL = "http://192.168.43.123:5000/api/predict";
